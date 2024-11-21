@@ -11,8 +11,8 @@ public class BootStrapper : MonoBehaviour
     private async UniTask _BootStrap()
     {
         await UniTask.WaitUntil(() =>
-           AudioManager.Instance.IsLoaded || ObjectPoolManager.Instance.IsLoaded ||
-           SceneManager.Instance.IsLoaded || UIManager.Instance.IsLoaded
+           AudioManager.Instance.IsLoaded && ObjectPoolManager.Instance.IsLoaded &&
+           SceneManager.Instance.IsLoaded && UIManager.Instance.IsLoaded
         );
 
         AudioManager.Instance.Bgm.Initialize();
