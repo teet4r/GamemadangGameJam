@@ -8,7 +8,7 @@ public class Bgm : MonoBehaviour
     public bool IsLoaded => _audioSource != null;
     public bool IsPlaying => _audioSource.isPlaying;
 
-    private AudioSource _audioSource;
+    [SerializeField] private AudioSource _audioSource;
     private Dictionary<BgmName, AudioClip> _bgms = new();
 
     public float Volume
@@ -20,11 +20,6 @@ public class Bgm : MonoBehaviour
             PlayerPrefs.SetFloat("BgmVolume", value);
             PlayerPrefs.Save();
         }
-    }
-
-    private void Awake()
-    {
-        _audioSource = GetComponent<AudioSource>();
     }
 
     public void Initialize()

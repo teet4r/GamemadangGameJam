@@ -7,7 +7,7 @@ public class Sfx : MonoBehaviour
 {
     public bool IsLoaded => _audioSource != null;
 
-    private AudioSource _audioSource;
+    [SerializeField] private AudioSource _audioSource;
     private Dictionary<SfxName, AudioClip> _sfxs = new();
 
     public float Volume
@@ -19,11 +19,6 @@ public class Sfx : MonoBehaviour
             PlayerPrefs.SetFloat("SfxVolume", value);
             PlayerPrefs.Save();
         }
-    }
-
-    private void Awake()
-    {
-        _audioSource = GetComponent<AudioSource>();
     }
 
     public void Initialize()
