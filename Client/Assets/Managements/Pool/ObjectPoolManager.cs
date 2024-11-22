@@ -67,8 +67,7 @@ public class ObjectPoolManager : SingletonBehaviour<ObjectPoolManager>
 
     public void Return<T>(T obj) where T : PoolObject
     {
-        obj.Tr.SetParent(_tr);
-        obj.OnReturn?.Invoke();
+        obj.transform.SetParent(_tr);
 
         _GetPool<T>().Return(obj);
     }

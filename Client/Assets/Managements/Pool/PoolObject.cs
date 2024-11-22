@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class PoolObject : MonoBehaviour
 {
-    public Transform Tr => tr;
-    protected Transform tr;
-
-    public Action OnReturn;
+    public new Transform transform => _transform;
+    private Transform _transform;
 
     protected virtual void Awake()
     {
-        TryGetComponent(out tr);
+        TryGetComponent(out _transform);
     }
 }

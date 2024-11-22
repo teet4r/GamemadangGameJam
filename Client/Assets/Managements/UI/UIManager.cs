@@ -46,6 +46,15 @@ public class UIManager : SingletonBehaviour<UIManager>
         return t;
     }
 
+    public T Get<T>() where T : UI
+    {
+        var type = typeof(T);
+
+        if (_uiPool.TryGetValue(type, out UI ui))
+            return ui as T;
+        return null;
+    }
+
     public void Hide(UI target)
     {
         if (!_uiPool.TryGetValue(target.GetType(), out UI ui))

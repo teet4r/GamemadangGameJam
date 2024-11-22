@@ -15,8 +15,43 @@ MonoBehaviour:
   m_GroupName: Prefabs
   m_GUID: 09a8223a5dfd1b74c9154379d784e6bf
   m_SerializeEntries:
+  - m_GUID: 4cfaf6af220b36544bc85ad6a939a9df
+    m_Address: Snake
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57a3dd6daafd9174fab5552a446fdf29
+    m_Address: MonsterDeadEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76900d189785e2143b1f3b2ca1227fce
+    m_Address: Skeleton
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89f54532b63cb4d4da4f6c2d3cc4f91e
+    m_Address: SkeletonWeapon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a31a21e7e58bdc640acd54a1a61e2a09
+    m_Address: SpinningSword
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b37a9d4cd44a55d499eb5054a084cfaa
+    m_Address: Golem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ced8d8314d5f8b74e842b2b7db67ddc6
     m_Address: Hero
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f195c05fc880ef944b9d2eeec7b152a6
+    m_Address: Viper
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
