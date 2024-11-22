@@ -5,9 +5,9 @@ using UnityEngine.AddressableAssets;
 
 public class Sfx : MonoBehaviour
 {
-    public bool IsLoaded => _audioSource != null;
+    public bool IsLoaded => !_audioSource.IsNull();
 
-    [SerializeField] private AudioSource _audioSource;
+    private AudioSource _audioSource;
     private Dictionary<SfxName, AudioClip> _sfxs = new();
 
     public float Volume
@@ -19,6 +19,11 @@ public class Sfx : MonoBehaviour
             PlayerPrefs.SetFloat("SfxVolume", value);
             PlayerPrefs.Save();
         }
+    }
+
+    private void Awake()
+    {
+        TryGetComponent(out _audioSource);
     }
 
     public void Initialize()

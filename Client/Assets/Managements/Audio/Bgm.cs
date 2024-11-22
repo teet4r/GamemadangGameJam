@@ -5,10 +5,10 @@ using UnityEngine.AddressableAssets;
 
 public class Bgm : MonoBehaviour
 {
-    public bool IsLoaded => _audioSource != null;
+    public bool IsLoaded => !_audioSource.IsNull();
     public bool IsPlaying => _audioSource.isPlaying;
 
-    [SerializeField] private AudioSource _audioSource;
+    private AudioSource _audioSource;
     private Dictionary<BgmName, AudioClip> _bgms = new();
 
     public float Volume
@@ -20,6 +20,11 @@ public class Bgm : MonoBehaviour
             PlayerPrefs.SetFloat("BgmVolume", value);
             PlayerPrefs.Save();
         }
+    }
+
+    private void Awake()
+    {
+        TryGetComponent(out _audioSource);
     }
 
     public void Initialize()
