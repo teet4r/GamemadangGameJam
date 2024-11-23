@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class MonsterThrowingWeapon : PoolObject, ICollidable
+public abstract class ThrowingWeapon : PoolObject, ICollidable
 {
     public int Damage => damage;
     [SerializeField] protected int damage;

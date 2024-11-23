@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpinningSwordController : MonoBehaviour
 {
-    [SerializeField] private Hero _target;
+    [SerializeField] private HeroBody _target;
     [SerializeField] private float _speed;
     [SerializeField] private float _distanceFromTarget;
     [SerializeField] private int _defaultSwordCount;
@@ -69,7 +69,7 @@ public class SpinningSwordController : MonoBehaviour
     public void AddSword(int count)
     {
         for (int i = 0; i < count; ++i)
-            _spinningSwords.Add(Instantiate(_swordPrefabs[_swordLevel], _target.transform));
+            _spinningSwords.Add(Instantiate(_swordPrefabs[_swordLevel], transform));
     }
 
     public void UpgradeSword()
@@ -79,7 +79,7 @@ public class SpinningSwordController : MonoBehaviour
         for (int i = 0; i < _spinningSwords.Count; ++i)
         {
             Destroy(_spinningSwords[i].gameObject);
-            _spinningSwords[i] = Instantiate(_swordPrefabs[_swordLevel], _target.transform);
+            _spinningSwords[i] = Instantiate(_swordPrefabs[_swordLevel], transform);
         }
     }
 }

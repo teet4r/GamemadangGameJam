@@ -24,8 +24,6 @@ public class MonsterSpawner : MonoBehaviour
 
     private IEnumerator _StartSpawn()
     {
-        var wfs = new WaitForSeconds(1f);
-
         while (true)
         {
             float x = UnityEngine.Random.Range(-5f, 5f);
@@ -48,37 +46,37 @@ public class MonsterSpawner : MonoBehaviour
             viper.transform.position = pos;
             viper.Initialize();
 
-            x = UnityEngine.Random.Range(-5f, 5f);
-            y = (float)Math.Sqrt(25 - x * x) * (UnityEngine.Random.Range(0, 1) == 0 ? -1 : 1);
+            //x = UnityEngine.Random.Range(-5f, 5f);
+            //y = (float)Math.Sqrt(25 - x * x) * (UnityEngine.Random.Range(0, 1) == 0 ? -1 : 1);
 
-            var golem = ObjectPoolManager.Instance.Get<Golem>();
-            pos = golem.transform.position;
-            pos.x = x;
-            pos.y = y;
-            golem.transform.position = pos;
-            golem.Initialize();
+            //var golem = ObjectPoolManager.Instance.Get<Golem>();
+            //pos = golem.transform.position;
+            //pos.x = x;
+            //pos.y = y;
+            //golem.transform.position = pos;
+            //golem.Initialize();
 
-            x = UnityEngine.Random.Range(-5f, 5f);
-            y = (float)Math.Sqrt(25 - x * x) * (UnityEngine.Random.Range(0, 1) == 0 ? -1 : 1);
+            //x = UnityEngine.Random.Range(-5f, 5f);
+            //y = (float)Math.Sqrt(25 - x * x) * (UnityEngine.Random.Range(0, 1) == 0 ? -1 : 1);
 
-            var skeleton = ObjectPoolManager.Instance.Get<Skeleton>();
-            pos = skeleton.transform.position;
-            pos.x = x;
-            pos.y = y;
-            skeleton.transform.position = pos;
-            skeleton.Initialize();
+            //var skeleton = ObjectPoolManager.Instance.Get<Skeleton>();
+            //pos = skeleton.transform.position;
+            //pos.x = x;
+            //pos.y = y;
+            //skeleton.transform.position = pos;
+            //skeleton.Initialize();
 
-            x = UnityEngine.Random.Range(-5f, 5f);
-            y = (float)Math.Sqrt(25 - x * x) * (UnityEngine.Random.Range(0, 1) == 0 ? -1 : 1);
+            //x = UnityEngine.Random.Range(-5f, 5f);
+            //y = (float)Math.Sqrt(25 - x * x) * (UnityEngine.Random.Range(0, 1) == 0 ? -1 : 1);
 
-            var slime = ObjectPoolManager.Instance.Get<Slime>();
-            pos = slime.transform.position;
-            pos.x = x;
-            pos.y = y;
-            slime.transform.position = pos;
-            slime.Initialize();
+            //var slime = ObjectPoolManager.Instance.Get<Slime>();
+            //pos = slime.transform.position;
+            //pos.x = x;
+            //pos.y = y;
+            //slime.transform.position = pos;
+            //slime.Initialize();
 
-            yield return wfs;
+            yield return YieldCache.WaitForSeconds(1f);
         }
     }
 }

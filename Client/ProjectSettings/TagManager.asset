@@ -47,7 +47,7 @@ TagManager:
   - name: Object
     uniqueID: 2783928485
     locked: 0
-  - name: SpinningSword
+  - name: Object2
     uniqueID: 3673940865
     locked: 0
   m_RenderingLayers:

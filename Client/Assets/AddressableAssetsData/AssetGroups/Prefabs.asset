@@ -20,13 +20,38 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 05ff9a5bc22ed5f4e9018e87f3da9669
+    m_Address: Magician
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 221c59653fb0fda4db0141959f1e7a04
+    m_Address: Guardian
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 224862322d0e51046afab321acbb8da0
     m_Address: SlimeWeapon
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fe6b85f116dde641b1f6feefb675779
+    m_Address: HunterWeapon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 30367f887d2376144b5fac9a1ab551ee
     m_Address: Experience
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 472ce971782951640bc28096cac33ced
+    m_Address: Explosion
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4905b2b5139a9504491c924a52440b82
+    m_Address: ShieldBreakingEffect
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -45,6 +70,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5dd6e9fbf2577b24789782b789486de3
+    m_Address: ExplosionEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e4850641b6bcf64f98712f5376da387
+    m_Address: Shield
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5f1ca541612bc7244b55f9ef3e38bef6
+    m_Address: Healer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 76900d189785e2143b1f3b2ca1227fce
     m_Address: Skeleton
     m_ReadOnly: 0
@@ -52,6 +92,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 89f54532b63cb4d4da4f6c2d3cc4f91e
     m_Address: SkeletonWeapon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 967edee8b7ea93c4fa04bc344a561a1f
+    m_Address: Hunter
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -70,13 +115,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ced8d8314d5f8b74e842b2b7db67ddc6
-    m_Address: Hero
+  - m_GUID: d36882a12a109634ea82c82de183b67a
+    m_Address: HealEffect
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d8baef55126e63a468d16b3942d2a1ad
     m_Address: SwordLevel3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee0bcc695cceef942afed262b5d0254c
+    m_Address: AvoidanceEffect
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -20,7 +20,7 @@ public class SkeletonWeapon : MonsterThrowingWeapon
 
     private IEnumerator _FlyTimer()
     {
-        yield return new WaitForSeconds(_flyTime);
+        yield return YieldCache.WaitForSeconds(_flyTime);
         Return();
     }
 

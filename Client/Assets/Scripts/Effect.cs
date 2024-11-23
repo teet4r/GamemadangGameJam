@@ -1,11 +1,13 @@
 using Cysharp.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public abstract class Effect : PoolObject
 {
     private Animator _animator;
-    [SerializeField] private int _playTimeMilliSeconds;
+    [SerializeField] private float _playTime;
+    public float PlayTime => _playTime;
 
     private readonly int _playHash = Animator.StringToHash("Play");
 
@@ -18,13 +20,13 @@ public abstract class Effect : PoolObject
 
     public void Play()
     {
-        _Play().Forget();
+        StartCoroutine(_Play());
     }
 
-    private async UniTask _Play()
+    private IEnumerator _Play()
     {
         _animator.SetTrigger(_playHash);
-        await UniTask.Delay(_playTimeMilliSeconds);
+        yield return YieldCache.WaitForSeconds(_playTime);
         Return();
     }
 }
