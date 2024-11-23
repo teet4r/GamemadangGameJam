@@ -175,7 +175,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.06, y: -0.18}
   m_Radius: 0.325
 --- !u!114 &-8945856685460989956
 MonoBehaviour:
@@ -194,7 +194,7 @@ MonoBehaviour:
   _animator: {fileID: 149408508614060060}
   _swordController: {fileID: 3316836715534510530}
   _speed: 20
-  _maxHp: 100
+  _maxHp: 300
 --- !u!1 &4305617167433302438
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,3 +243,9 @@ MonoBehaviour:
   _speed: 100
   _distanceFromTarget: 1
   _defaultSwordCount: 1
+  _swordPrefabs:
+  - {fileID: 1664594132932121086, guid: a31a21e7e58bdc640acd54a1a61e2a09, type: 3}
+  - {fileID: 6793834167180317388, guid: c31ff9c346106624f855e44a8a005911, type: 3}
+  - {fileID: 1213672667267656409, guid: d8baef55126e63a468d16b3942d2a1ad, type: 3}
+  - {fileID: 7196872304160059757, guid: 4b4cbd0b3d13f5b42850db229ac7511d, type: 3}
+  - {fileID: 7497693001034057004, guid: 834105269efc2a0468ff17e332eae260, type: 3}

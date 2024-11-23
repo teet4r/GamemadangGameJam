@@ -27,6 +27,4 @@ public abstract class Effect : PoolObject
         await UniTask.Delay(_playTimeMilliSeconds);
         Return();
     }
-
-    protected abstract void Return();
 }

@@ -1,21 +1,36 @@
+using System.Collections;
 using UnityEngine;
 
-public class SkeletonWeapon : PoolObject, ICollidable
+public class SkeletonWeapon : MonsterThrowingWeapon
 {
-    public int Damage => _damage;
-    [SerializeField] private int _damage;
-    [SerializeField] private float _speed;
-    Rigidbody2D _rigid;
+    [SerializeField] private float _flyTime;
+    private Coroutine _timerRoutine;
 
-    protected override void Awake()
+    public override void Throw(Vector2 dir)
     {
-        base.Awake();
+        if (_timerRoutine != null)
+            return;
 
-        TryGetComponent(out _rigid);
+        rigid.SetRotation((Mathf.Atan2(dir.y, dir.x) * 180f / Mathf.PI) + 90f);
+        dir.Normalize();
+        rigid.linearVelocity = speed * dir;
+
+        _timerRoutine = StartCoroutine(_FlyTimer());
     }
 
-    public void Throw(Vector2 dir)
+    private IEnumerator _FlyTimer()
     {
-        _rigid.linearVelocity = _speed * dir.normalized;
+        yield return new WaitForSeconds(_flyTime);
+        Return();
+    }
+
+    public override void Return()
+    {
+        if (_timerRoutine == null)
+            return;
+
+        StopCoroutine(_timerRoutine);
+        _timerRoutine = null;
+        ObjectPoolManager.Instance.Return(this);
     }
 }

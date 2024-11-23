@@ -10,10 +10,14 @@ public abstract class Monster : PoolObject, ICollidable
     protected SpriteRenderer spriteRenderer;
 
     public bool IsDead => hp <= 0;
+    public int CollisionDamage => _collisionDamage;
     [SerializeField] private int _maxHp;
     [SerializeField] private float _speed;
+    [SerializeField] private int _collisionDamage;
 
     protected int hp;
+    protected virtual bool flipReverse => false;
+    protected bool IsStopCondition => IsDead || Ingame.Instance.Hero.IsNull() || Ingame.Instance.Hero.IsDead;
 
     protected override void Awake()
     {
@@ -27,21 +31,24 @@ public abstract class Monster : PoolObject, ICollidable
 
     protected virtual void Update()
     {
-        if (IsDead || Ingame.Instance.Hero.IsDead)
+        if (IsStopCondition)
+        {
+            rigid.linearVelocity = Vector2.zero;
             return;
+        }
 
         _Move();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out ICollidable collidable))
+        if (!collision.gameObject.TryGetComponent(out ICollidable collidable))
+            return;
+
+        if (collidable is SpinningSword)
         {
-            if (collidable is SpinningSword)
-            {
-                var sword = collidable as SpinningSword;
-                GetDamage(sword.Damage);
-            }
+            var sword = collidable as SpinningSword;
+            GetDamage(sword.Damage);
         }
     }
 
@@ -61,6 +68,9 @@ public abstract class Monster : PoolObject, ICollidable
 
             UIManager.Instance.Get<UIIngame>().AddKillCount();
 
+            var exp = ObjectPoolManager.Instance.Get<Experience>();
+            exp.transform.position = rigid.position;
+
             Return();
         }
     }
@@ -72,10 +82,8 @@ public abstract class Monster : PoolObject, ICollidable
         rigid.MovePosition(nextPos);
 
         if (HeroDir.x > 0)
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = !flipReverse;
         else if (HeroDir.x < 0)
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = flipReverse;
     }
-
-    protected abstract void Return();
 }

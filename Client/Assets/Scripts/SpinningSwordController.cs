@@ -8,14 +8,18 @@ public class SpinningSwordController : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _distanceFromTarget;
     [SerializeField] private int _defaultSwordCount;
-    private float _degree;
+    [SerializeField] private SpinningSword[] _swordPrefabs;
 
     private List<SpinningSword> _spinningSwords = new();
     private Coroutine _spinRoutine;
 
+    private float _swordDegree;
+    private int _swordLevel;
+
     public void Initialize()
     {
-        _degree = 0f;
+        _swordDegree = 0f;
+        _swordLevel = 0;
         AddSword(_defaultSwordCount);
     }
 
@@ -33,17 +37,17 @@ public class SpinningSwordController : MonoBehaviour
         {
             for (int i = 0; i < _spinningSwords.Count; ++i)
             {
-                var rad = Mathf.Deg2Rad * (_degree + i * (360f / _spinningSwords.Count));
+                var rad = Mathf.Deg2Rad * (_swordDegree + i * (360f / _spinningSwords.Count));
                 var x = _distanceFromTarget * Mathf.Sin(rad);
                 var y = _distanceFromTarget * Mathf.Cos(rad);
                 var targetPos = _target.transform.position;
                 targetPos.x += x;
                 targetPos.y += y;
-                _spinningSwords[i].transform.SetPositionAndRotation(targetPos, Quaternion.Euler(0f, 0f, (_degree - 45f + i * (360f / _spinningSwords.Count)) * -1));
-                if (_degree > 360f)
-                    _degree %= 360f;
+                _spinningSwords[i].transform.SetPositionAndRotation(targetPos, Quaternion.Euler(0f, 0f, (_swordDegree - 45f + i * (360f / _spinningSwords.Count)) * -1));
+                if (_swordDegree > 360f)
+                    _swordDegree %= 360f;
             }
-            _degree += Time.deltaTime * _speed;
+            _swordDegree += Time.deltaTime * _speed;
 
             yield return null;
         }
@@ -58,17 +62,24 @@ public class SpinningSwordController : MonoBehaviour
         _spinRoutine = null;
 
         for (int i = 0; i < _spinningSwords.Count; ++i)
-            ObjectPoolManager.Instance.Return(_spinningSwords[i]);
-
+            Destroy(_spinningSwords[i]);
         _spinningSwords.Clear();
     }
 
     public void AddSword(int count)
     {
         for (int i = 0; i < count; ++i)
+            _spinningSwords.Add(Instantiate(_swordPrefabs[_swordLevel], _target.transform));
+    }
+
+    public void UpgradeSword()
+    {
+        ++_swordLevel;
+
+        for (int i = 0; i < _spinningSwords.Count; ++i)
         {
-            var sword = ObjectPoolManager.Instance.Get<SpinningSword>();
-            _spinningSwords.Add(sword);
+            Destroy(_spinningSwords[i].gameObject);
+            _spinningSwords[i] = Instantiate(_swordPrefabs[_swordLevel], _target.transform);
         }
     }
 }

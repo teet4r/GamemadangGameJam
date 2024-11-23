@@ -24,7 +24,7 @@ public class MonsterSpawner : MonoBehaviour
 
     private IEnumerator _StartSpawn()
     {
-        var wfs = new WaitForSeconds(0.5f);
+        var wfs = new WaitForSeconds(1f);
 
         while (true)
         {
@@ -67,6 +67,16 @@ public class MonsterSpawner : MonoBehaviour
             pos.y = y;
             skeleton.transform.position = pos;
             skeleton.Initialize();
+
+            x = UnityEngine.Random.Range(-5f, 5f);
+            y = (float)Math.Sqrt(25 - x * x) * (UnityEngine.Random.Range(0, 1) == 0 ? -1 : 1);
+
+            var slime = ObjectPoolManager.Instance.Get<Slime>();
+            pos = slime.transform.position;
+            pos.x = x;
+            pos.y = y;
+            slime.transform.position = pos;
+            slime.Initialize();
 
             yield return wfs;
         }

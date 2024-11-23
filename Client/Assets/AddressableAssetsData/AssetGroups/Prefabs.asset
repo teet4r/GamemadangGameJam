@@ -15,6 +15,26 @@ MonoBehaviour:
   m_GroupName: Prefabs
   m_GUID: 09a8223a5dfd1b74c9154379d784e6bf
   m_SerializeEntries:
+  - m_GUID: 009df072aa8af3c418de761fbd182d00
+    m_Address: Slime
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 224862322d0e51046afab321acbb8da0
+    m_Address: SlimeWeapon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30367f887d2376144b5fac9a1ab551ee
+    m_Address: Experience
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b4cbd0b3d13f5b42850db229ac7511d
+    m_Address: SwordLevel4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4cfaf6af220b36544bc85ad6a939a9df
     m_Address: Snake
     m_ReadOnly: 0
@@ -36,7 +56,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a31a21e7e58bdc640acd54a1a61e2a09
-    m_Address: SpinningSword
+    m_Address: SwordLevel1
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -45,8 +65,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c31ff9c346106624f855e44a8a005911
+    m_Address: SwordLevel2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ced8d8314d5f8b74e842b2b7db67ddc6
     m_Address: Hero
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8baef55126e63a468d16b3942d2a1ad
+    m_Address: SwordLevel3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

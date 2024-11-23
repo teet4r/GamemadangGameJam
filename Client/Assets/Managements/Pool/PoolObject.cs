@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolObject : MonoBehaviour
+public abstract class PoolObject : MonoBehaviour
 {
     public new Transform transform => _transform;
     private Transform _transform;
@@ -12,4 +12,6 @@ public class PoolObject : MonoBehaviour
     {
         TryGetComponent(out _transform);
     }
+
+    public abstract void Return();
 }

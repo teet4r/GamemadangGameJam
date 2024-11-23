@@ -10,6 +10,9 @@ public class Skeleton : Monster
     {
         base.Update();
 
+        if (IsStopCondition)
+            return;
+
         _Attack();
     }
 
@@ -27,7 +30,7 @@ public class Skeleton : Monster
         }
     }
 
-    protected override void Return()
+    public override void Return()
     {
         ObjectPoolManager.Instance.Return(this);
     }

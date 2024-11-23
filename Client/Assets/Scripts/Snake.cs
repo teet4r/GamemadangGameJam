@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Snake : Monster
 {
-    protected override void Return()
+    public override void Return()
     {
         ObjectPoolManager.Instance.Return(this);
     }
