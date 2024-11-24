@@ -10,6 +10,7 @@ public class UIIngame : UI
     [SerializeField] private Image _hpBar;
     [SerializeField] private Image _expBar;
     [SerializeField] private Text _levelText;
+    [SerializeField] private Image _coolDownImage;
     [SerializeField] private UIMercenarySlot[] _mercenarySlots;
 
     [Header("Variables")]
@@ -72,5 +73,10 @@ public class UIIngame : UI
     public void UpdateLevelText(int curLevel)
     {
         _levelText.text = $"Lv. {curLevel}";
+    }
+
+    public void UpdateSkillCoolDown(float remainCool, float totalCool)
+    {
+        _coolDownImage.fillAmount = remainCool / totalCool;
     }
 }

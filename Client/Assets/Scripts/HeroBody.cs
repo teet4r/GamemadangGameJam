@@ -16,7 +16,7 @@ public class HeroBody : MonoBehaviour, ICollidable
     [SerializeField] private float _speed = 5f;
     [SerializeField] private int _maxHp = 100;
     [SerializeField] private float _delaySecondsPerSkill;
-    private float _delaySeconds = 0f;
+    private float _delaySeconds;
     private bool _isAvoiding;
     private Coroutine _skillRoutine;
 
@@ -41,15 +41,13 @@ public class HeroBody : MonoBehaviour, ICollidable
     {
         TryGetComponent(out _rigid);
         TryGetComponent(out _animator);
-    }
 
-    private void Start()
-    {
         _mainCamera = Camera.main;
         _hp = _maxHp;
         _level = 1;
         _exp = 0;
         _isAvoiding = false;
+        _delaySeconds = _delaySecondsPerSkill;
 
         _swordController.Initialize();
         _swordController.StartSpin();
@@ -62,7 +60,12 @@ public class HeroBody : MonoBehaviour, ICollidable
 
         _Move();
         _CameraFollowing();
-        _Skill();
+        _SkillCoolDown();
+
+        if (Input.GetMouseButtonDown(0))
+            _swordController.SwitchSpinDir();
+        else if (Input.GetKeyDown(KeyCode.Space))
+            _UseSkill();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -75,12 +78,6 @@ public class HeroBody : MonoBehaviour, ICollidable
             var weapon = collidable as MonsterThrowingWeapon;
             GetDamage(weapon.Damage);
             weapon.Return();
-        }
-        else if (collidable is Experience)
-        {
-            var exp = collidable as Experience;
-            GetExp(exp.Value);
-            exp.Return();
         }
     }
 
@@ -194,21 +191,21 @@ public class HeroBody : MonoBehaviour, ICollidable
         _mainCamera.transform.position = cameraPos;
     }
 
-    private void _Skill()
+    private void _SkillCoolDown()
     {
         _delaySeconds += Time.deltaTime;
-        if (_delaySeconds < _delaySecondsPerSkill)
-            return;
-
-        if (_skillRoutine != null)
-        {
+        if (_delaySeconds > _delaySecondsPerSkill)
             _delaySeconds = _delaySecondsPerSkill;
-            return;
+        UIManager.Instance.Get<UIIngame>().UpdateSkillCoolDown(_delaySecondsPerSkill - _delaySeconds, _delaySecondsPerSkill);
+    }
+
+    private void _UseSkill()
+    {
+        if (_delaySeconds >= _delaySecondsPerSkill)
+        {
+            _delaySeconds -= _delaySecondsPerSkill;
+            _skillRoutine = StartCoroutine(_SkillAvoidanceRoutine());
         }
-
-        _delaySeconds -= _delaySecondsPerSkill;
-
-        _skillRoutine = StartCoroutine(_SkillAvoidanceRoutine());
     }
 
     private IEnumerator _SkillAvoidanceRoutine()

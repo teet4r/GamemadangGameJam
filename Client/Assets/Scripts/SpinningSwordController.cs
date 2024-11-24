@@ -15,11 +15,13 @@ public class SpinningSwordController : MonoBehaviour
 
     private float _swordDegree;
     private int _swordLevel;
+    private bool _spinDir;
 
     public void Initialize()
     {
         _swordDegree = 0f;
         _swordLevel = 0;
+        _spinDir = true;
         AddSword(_defaultSwordCount);
     }
 
@@ -29,6 +31,11 @@ public class SpinningSwordController : MonoBehaviour
             return;
 
         _spinRoutine = StartCoroutine(_StartSpin());
+    }
+
+    public void SwitchSpinDir()
+    {
+        _spinDir = !_spinDir;
     }
 
     private IEnumerator _StartSpin()
@@ -47,7 +54,7 @@ public class SpinningSwordController : MonoBehaviour
                 if (_swordDegree > 360f)
                     _swordDegree %= 360f;
             }
-            _swordDegree += Time.deltaTime * _speed;
+            _swordDegree += Time.deltaTime * _speed * (_spinDir ? 1 : -1);
 
             yield return null;
         }

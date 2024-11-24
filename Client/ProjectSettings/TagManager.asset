@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Area
   - Ground
+  - Sword
+  - HeroBody
   layers:
   - Default
   - TransparentFX
