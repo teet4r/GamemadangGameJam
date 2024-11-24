@@ -6,6 +6,8 @@ public class Shield : PoolObject, ICollidable
     [SerializeField] private int _maxHp;
     [SerializeField] private float _duration;
     private Animator _animator;
+    private int _additionalShieldHp = 0;
+    private float _additionalDuration = 0;
 
     private readonly int _defenceHash = Animator.StringToHash("Defence");
     private Coroutine _defenceRoutine;
@@ -61,14 +63,24 @@ public class Shield : PoolObject, ICollidable
         if (_defenceRoutine != null)
             return;
 
-        _hp = _maxHp;
+        _hp = _maxHp + _additionalShieldHp;
         _defenceRoutine = StartCoroutine(_DefenceRoutine());
+    }
+
+    public void IncreaseMaxHp(int amount)
+    {
+        _additionalShieldHp = amount;
+    }
+
+    public void IncreaseDuration(float amount)
+    {
+        _additionalDuration = amount;
     }
 
     private IEnumerator _DefenceRoutine()
     {
         _animator.SetTrigger(_defenceHash);
-        yield return YieldCache.WaitForSeconds(_duration);
+        yield return YieldCache.WaitForSeconds(_duration + _additionalDuration);
         _Destroy();
     }
 
@@ -99,6 +111,8 @@ public class Shield : PoolObject, ICollidable
 
     public override void Return()
     {
+        _additionalShieldHp = 0;
+        _additionalDuration = 0;
         ObjectPoolManager.Instance.Return(this);
     }
 }

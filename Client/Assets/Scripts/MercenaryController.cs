@@ -60,4 +60,12 @@ public class MercenaryController : MonoBehaviour
                 break;
             }
     }
+
+    public T GetMercenary<T>() where T : Mercenary
+    {
+        for (int i = 0; i < _mercenaries.Length; ++i )
+            if ( _mercenaries[i] is T)
+                return _mercenaries[i] as T;
+        return null;
+    }
 }

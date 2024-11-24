@@ -123,5 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21307dfa40e374a41826aa3c67fdd823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healAmount: 10
-  _delaySecondsPerSkill: 5
+  _healAmount: 100
+  _delaySecondsPerSkill: 30

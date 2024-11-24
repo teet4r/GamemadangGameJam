@@ -13,6 +13,9 @@ public class Mercenary : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (Ingame.Instance.IsGameEnd)
+            return;
+
         var hero = Ingame.Instance.Hero;
         if (hero.IsNull() || hero.IsDead)
             return;

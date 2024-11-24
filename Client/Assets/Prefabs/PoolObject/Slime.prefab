@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb7631f39744bc489b18890d77e7e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHp: 20
-  _speed: 1
-  _collisionDamage: 10
-  _throwCoolDown: 2
+  _maxHp: 1000
+  _speed: 0.5
+  _collisionDamage: 100
+  _throwCoolDown: 3

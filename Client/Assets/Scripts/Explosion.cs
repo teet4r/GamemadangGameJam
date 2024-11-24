@@ -4,6 +4,7 @@ public class Explosion : PoolObject
 {
     [SerializeField] private int _damage;
     [SerializeField] private float _damageRadius;
+    private int _additionalDamage = 0;
 
     public void Attack()
     {
@@ -17,14 +18,20 @@ public class Explosion : PoolObject
             if (!monsters[i].TryGetComponent(out Monster monster))
                 return;
 
-            monster.GetDamage(_damage);
+            monster.GetDamage(_damage + _additionalDamage);
         }
 
         Return();
     }
 
+    public void IncreaseDamage(int amount)
+    {
+        _additionalDamage += amount;
+    }
+
     public override void Return()
     {
+        _additionalDamage = 0;
         ObjectPoolManager.Instance.Return(this);
     }
 }

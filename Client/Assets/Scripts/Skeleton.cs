@@ -8,10 +8,10 @@ public class Skeleton : Monster
 
     protected override void Update()
     {
-        base.Update();
-
         if (IsStopCondition)
             return;
+
+        base.Update();
 
         _Attack();
     }

@@ -13,6 +13,7 @@ public partial class SceneManager : SingletonBehaviour<SceneManager>
 {
     public async UniTask LoadSceneAsync(SceneName sceneName)
     {
+        await UnitySceneManager.LoadSceneAsync((int)SceneName.Empty);
         await UnitySceneManager.LoadSceneAsync((int)sceneName);
     }
 }

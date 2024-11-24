@@ -188,6 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bfbee6416d8591419ce683959318bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHp: 10
-  _speed: 3
-  _collisionDamage: 10
+  _maxHp: 300
+  _speed: 6
+  _collisionDamage: 120

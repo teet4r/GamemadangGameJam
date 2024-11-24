@@ -9,6 +9,7 @@ public class HeroBody : MonoBehaviour, ICollidable
     [SerializeField] private MercenaryController _mercenaryController;
     private Rigidbody2D _rigid;
     private Animator _animator;
+    public SpinningSwordController swordController => _swordController;
     public MercenaryController mercenaryController => _mercenaryController;
 
     [Header("Stats")]
@@ -29,6 +30,7 @@ public class HeroBody : MonoBehaviour, ICollidable
     private Camera _mainCamera;
 
     public bool IsDead => _hp <= 0;
+    public int Level => _level;
     private int _level;
     private int _hp;
     private int _exp;
@@ -53,26 +55,13 @@ public class HeroBody : MonoBehaviour, ICollidable
 
         _swordController.Initialize();
         _swordController.StartSpin();
-
-        Invoke("B", 3f);
-    }
-
-    private void A()
-    {
-        if (Addressables.InstantiateAsync("Magician", transform.position, Quaternion.identity).WaitForCompletion().TryGetComponent(out Magician magician))
-            _mercenaryController.AddMercenary(magician);
-
-        //Invoke("B", 3f);
-    }
-
-    private void B()
-    {
-        if (Addressables.InstantiateAsync("Guardian", transform.position, Quaternion.identity).WaitForCompletion().TryGetComponent(out Guardian guardian))
-            _mercenaryController.AddMercenary(guardian);
     }
 
     private void Update()
     {
+        if (Ingame.Instance.IsGameEnd)
+            return;
+
         _Move();
         _CameraFollowing();
         _Skill();
@@ -111,6 +100,8 @@ public class HeroBody : MonoBehaviour, ICollidable
 
     public void GetDamage(int damage)
     {
+        if (Ingame.Instance.IsGameEnd)
+            return;
         if (_isAvoiding)
             return;
 
@@ -122,6 +113,8 @@ public class HeroBody : MonoBehaviour, ICollidable
 
         if (IsDead)
         {
+            Ingame.Instance.IsGameEnd = true;
+            UIManager.Instance.Show<UIGameoverPopup>();
             _swordController.StopSpin();
             Destroy(gameObject);
         }
@@ -138,6 +131,9 @@ public class HeroBody : MonoBehaviour, ICollidable
 
     public void GetExp(int exp)
     {
+        if (_level >= 30)
+            return;
+
         _exp += exp;
 
         int neededExp = LevelData.ExpToLevelUp[_level];
@@ -145,12 +141,33 @@ public class HeroBody : MonoBehaviour, ICollidable
         {
             _exp -= neededExp;
             ++_level;
-            _hp = _maxHp;
-            UIManager.Instance.Get<UIIngame>().UpdateHpBar(_hp, _maxHp);
-            UIManager.Instance.Show<UILevelUpPopup>().Bind();
+            _maxHp += 200;
+            GetHeal(_maxHp);
+
+            if (_level % 3 == 0)
+            {
+                var result = IncrementTable.Instance.Pick3Increments();
+                UIManager.Instance.Show<UILevelUpPopup>().Bind(result);
+            }
         }
         UIManager.Instance.Get<UIIngame>().UpdateExpBar(_exp, LevelData.ExpToLevelUp[_level]);
         UIManager.Instance.Get<UIIngame>().UpdateLevelText(_level);
+    }
+
+    public void IncreaseMaxHp(int amount)
+    {
+        _maxHp += amount;
+        GetHeal(_maxHp);
+    }
+
+    public void IncreaseSpeed(int amount)
+    {
+        _speed += amount;
+    }
+
+    public void DecreaseSkillCoolDown(int amount)
+    {
+        _delaySecondsPerSkill -= amount;
     }
 
     private void _Move()
@@ -209,5 +226,29 @@ public class HeroBody : MonoBehaviour, ICollidable
         _isAvoiding = false;
 
         _skillRoutine = null;
+    }
+
+    public void RecallHunter()
+    {
+        if (Addressables.InstantiateAsync("Hunter", transform.position, Quaternion.identity).WaitForCompletion().TryGetComponent(out Hunter hunter))
+            _mercenaryController.AddMercenary(hunter);
+    }
+
+    public void RecallGuardian()
+    {
+        if (Addressables.InstantiateAsync("Guardian", transform.position, Quaternion.identity).WaitForCompletion().TryGetComponent(out Guardian guardian))
+            _mercenaryController.AddMercenary(guardian);
+    }
+
+    public void RecallMagician()
+    {
+        if (Addressables.InstantiateAsync("Magician", transform.position, Quaternion.identity).WaitForCompletion().TryGetComponent(out Magician magician))
+            _mercenaryController.AddMercenary(magician);
+    }
+
+    public void RecallHealer()
+    {
+        if (Addressables.InstantiateAsync("Healer", transform.position, Quaternion.identity).WaitForCompletion().TryGetComponent(out Healer healer))
+            _mercenaryController.AddMercenary(healer);
     }
 }

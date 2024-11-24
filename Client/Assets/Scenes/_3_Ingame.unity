@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hero: {fileID: 1574114066}
+  IsGameEnd: 0
 --- !u!1 &1110868711
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +349,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1389078922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1389078923}
+  - component: {fileID: 1389078924}
+  m_Layer: 0
+  m_Name: IncrementTable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1389078923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389078922}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1389078924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389078922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cba29adfb120d4483a081af0c94fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _incrementDatas:
+  - {fileID: 11400000, guid: 9cc1039da0f5db3418b52cf48e874986, type: 2}
+  - {fileID: 11400000, guid: ec7148384e8d3f34f9c094861fcd3b37, type: 2}
+  - {fileID: 11400000, guid: a246553ce22278a4594f3e0e1119e435, type: 2}
+  - {fileID: 11400000, guid: 6fc886943599f25429b48862ab168abc, type: 2}
+  - {fileID: 11400000, guid: 5b1556bd2ef87f04d98d0a4c98b1dafd, type: 2}
+  - {fileID: 11400000, guid: a70bc873ca3d6144ea8bb5f5c7ae7e85, type: 2}
+  - {fileID: 11400000, guid: 303523b1a1205d84584b1372950e77ce, type: 2}
+  - {fileID: 11400000, guid: 0c457d8ca9c68e14882a4bc788957ff2, type: 2}
+  - {fileID: 11400000, guid: 7c884bda191845644803b1bd53bc196e, type: 2}
+  - {fileID: 11400000, guid: aeb877c15d16b9a46934afafa83d34a5, type: 2}
+  - {fileID: 11400000, guid: 8d740b80aadb2b048b0f861f52278516, type: 2}
+  - {fileID: 11400000, guid: 88c6dcee11579e945b811bb16ca5e7e2, type: 2}
+  - {fileID: 11400000, guid: 4632897746ee8ea43a835aa3b353ca1e, type: 2}
+  - {fileID: 11400000, guid: 21fc3f2b596fbd442bcdc48b361b1286, type: 2}
+  - {fileID: 11400000, guid: 9565ad468e6295e4690517d96572d32f, type: 2}
+  - {fileID: 11400000, guid: 048e1dac32026d2419a65e9454b9b954, type: 2}
+  - {fileID: 11400000, guid: 6ca196b51add401468e7f9710e74d0f4, type: 2}
+  - {fileID: 11400000, guid: e342d823841c03c4c8cd4d921fe2599d, type: 2}
+  - {fileID: 11400000, guid: 7d3e76a51836eda40b67d1c17305b730, type: 2}
+  - {fileID: 11400000, guid: ed65b19118269bd449cba60e9154ec5f, type: 2}
+  - {fileID: 11400000, guid: 567580368925d6140bda60d261815090, type: 2}
 --- !u!114 &1574114066 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2436402062992580850, guid: 5d40c0a838997c54482e4514d61bc31b, type: 3}
@@ -403,6 +470,197 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957e4982e57d31a4399db3fe6933cf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnInfoArrays:
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 1
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 5
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 3
+    - monsterName: 1
+      count: 2
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 5
+    - monsterName: 1
+      count: 2
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 15
+  - spawnInfoarray:
+    - monsterName: 1
+      count: 5
+  - spawnInfoarray:
+    - monsterName: 1
+      count: 5
+    - monsterName: 3
+      count: 1
+  - spawnInfoarray:
+    - monsterName: 3
+      count: 5
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 5
+    - monsterName: 1
+      count: 5
+    - monsterName: 3
+      count: 5
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 10
+    - monsterName: 1
+      count: 5
+    - monsterName: 3
+      count: 5
+  - spawnInfoarray:
+    - monsterName: 1
+      count: 5
+    - monsterName: 2
+      count: 1
+    - monsterName: 3
+      count: 5
+  - spawnInfoarray:
+    - monsterName: 1
+      count: 5
+    - monsterName: 2
+      count: 5
+    - monsterName: 3
+      count: 5
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 5
+    - monsterName: 1
+      count: 5
+    - monsterName: 3
+      count: 5
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 7
+    - monsterName: 1
+      count: 7
+    - monsterName: 2
+      count: 5
+    - monsterName: 3
+      count: 5
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 7
+    - monsterName: 1
+      count: 7
+    - monsterName: 2
+      count: 5
+    - monsterName: 3
+      count: 5
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 7
+    - monsterName: 1
+      count: 7
+    - monsterName: 2
+      count: 7
+    - monsterName: 3
+      count: 5
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 7
+    - monsterName: 1
+      count: 7
+    - monsterName: 2
+      count: 7
+    - monsterName: 3
+      count: 10
+  - spawnInfoarray:
+    - monsterName: 2
+      count: 7
+    - monsterName: 3
+      count: 20
+  - spawnInfoarray:
+    - monsterName: 2
+      count: 10
+    - monsterName: 3
+      count: 20
+  - spawnInfoarray:
+    - monsterName: 2
+      count: 5
+    - monsterName: 4
+      count: 1
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 15
+    - monsterName: 1
+      count: 10
+    - monsterName: 2
+      count: 10
+    - monsterName: 3
+      count: 5
+  - spawnInfoarray:
+    - monsterName: 3
+      count: 10
+    - monsterName: 4
+      count: 1
+  - spawnInfoarray:
+    - monsterName: 3
+      count: 30
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 15
+    - monsterName: 1
+      count: 5
+    - monsterName: 2
+      count: 7
+    - monsterName: 3
+      count: 10
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 15
+    - monsterName: 1
+      count: 10
+    - monsterName: 2
+      count: 10
+    - monsterName: 3
+      count: 10
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 15
+    - monsterName: 1
+      count: 10
+    - monsterName: 2
+      count: 20
+    - monsterName: 3
+      count: 10
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 15
+    - monsterName: 1
+      count: 20
+    - monsterName: 2
+      count: 20
+    - monsterName: 3
+      count: 20
+  - spawnInfoarray:
+    - monsterName: 0
+      count: 15
+    - monsterName: 1
+      count: 20
+    - monsterName: 2
+      count: 30
+    - monsterName: 3
+      count: 30
+    - monsterName: 4
+      count: 2
+  - spawnInfoarray:
+    - monsterName: 3
+      count: 30
+    - monsterName: 4
+      count: 3
+  - spawnInfoarray:
+    - monsterName: 3
+      count: 30
+    - monsterName: 4
+      count: 5
 --- !u!1001 &6882257737567019228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -467,4 +725,5 @@ SceneRoots:
   - {fileID: 45102986}
   - {fileID: 1110868713}
   - {fileID: 1586977052}
+  - {fileID: 1389078923}
   - {fileID: 6882257737567019228}

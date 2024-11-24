@@ -2804,6 +2804,7 @@ GameObject:
   - component: {fileID: 3917605157644118684}
   - component: {fileID: 8430316163204476827}
   - component: {fileID: 4294470356369052332}
+  - component: {fileID: 2255952809319220553}
   m_Layer: 5
   m_Name: UIGameDescription
   m_TagString: Untagged
@@ -2857,7 +2858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8666667}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2874,6 +2875,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2255952809319220553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141159665552578823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e2f14bdb04da64f804a02eb6002f23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _exit: {fileID: 3004489701613806940}
 --- !u!1 &6538451968558912351
 GameObject:
   m_ObjectHideFlags: 0

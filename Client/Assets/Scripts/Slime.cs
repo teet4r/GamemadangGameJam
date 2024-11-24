@@ -9,10 +9,10 @@ public class Slime : Monster
 
     protected override void Update()
     {
-        base.Update();
-
         if (IsStopCondition)
             return;
+
+        base.Update();
 
         _Attack();
     }

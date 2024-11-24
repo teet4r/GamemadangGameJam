@@ -82,4 +82,9 @@ public class SpinningSwordController : MonoBehaviour
             _spinningSwords[i] = Instantiate(_swordPrefabs[_swordLevel], transform);
         }
     }
+
+    public void IncreaseSpeed(int amount)
+    {
+        _speed += amount;
+    }
 }

@@ -17,7 +17,7 @@ public abstract class Monster : PoolObject, ICollidable
 
     protected int hp;
     protected virtual bool flipReverse => false;
-    protected bool IsStopCondition => IsDead || Ingame.Instance.Hero.IsNull() || Ingame.Instance.Hero.IsDead;
+    protected bool IsStopCondition => Ingame.Instance.IsGameEnd || IsDead || Ingame.Instance.Hero.IsNull() || Ingame.Instance.Hero.IsDead;
 
     protected override void Awake()
     {
@@ -68,8 +68,11 @@ public abstract class Monster : PoolObject, ICollidable
 
             UIManager.Instance.Get<UIIngame>().AddKillCount();
 
-            var exp = ObjectPoolManager.Instance.Get<Experience>();
-            exp.transform.position = rigid.position;
+            if (Ingame.Instance.Hero.Level < 30 && Random.Range(0, 100) < 70)
+            {
+                var exp = ObjectPoolManager.Instance.Get<Experience>();
+                exp.transform.position = rigid.position;
+            }
 
             Return();
         }

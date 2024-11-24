@@ -5,6 +5,7 @@ public class HunterWeapon : MercenaryThrowingWeapon
 {
     [SerializeField] private float _flyTime;
     private Coroutine _timerRoutine;
+    private int _additionalDamage = 0;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,7 +15,7 @@ public class HunterWeapon : MercenaryThrowingWeapon
         if (collidable is Monster)
         {
             var monster = collidable as Monster;
-            monster.GetDamage(damage);
+            monster.GetDamage(damage + _additionalDamage);
             Return();
         }
     }
@@ -31,6 +32,11 @@ public class HunterWeapon : MercenaryThrowingWeapon
         _timerRoutine = StartCoroutine(_FlyTimer());
     }
 
+    public void IncreaseDamage(int additionalDamage)
+    {
+        _additionalDamage += additionalDamage;
+    }
+
     private IEnumerator _FlyTimer()
     {
         yield return YieldCache.WaitForSeconds(_flyTime);
@@ -44,6 +50,7 @@ public class HunterWeapon : MercenaryThrowingWeapon
 
         StopCoroutine(_timerRoutine);
         _timerRoutine = null;
+        _additionalDamage = 0;
         ObjectPoolManager.Instance.Return(this);
     }
 }

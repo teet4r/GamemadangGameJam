@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd943bad772c724a8e91de299be2ee5, type: 3}
+  m_Name: _15_StrongerHealer
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 8bc85a240a4534b44820387901e43ee3, type: 3}
+  _name: "\uBC31\uB9C8\uBC95\uC0AC"
+  _description: "\uB354 \uAC15\uD574\uC9C4 \uD790\uB7EC\uB294 \uB354 \uB192\uC740
+    \uCE58\uC720\uB825\uC744 \uAC16\uC2B5\uB2C8\uB2E4."
+  _values:
+  - 150
+  - 150
+  _values2: []

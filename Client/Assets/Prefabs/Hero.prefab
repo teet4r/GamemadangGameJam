@@ -81,7 +81,7 @@ MonoBehaviour:
   _target: {fileID: 2436402062992580850}
   _speed: 100
   _distanceFromTarget: 1
-  _defaultSwordCount: 1
+  _defaultSwordCount: 3
   _swordPrefabs:
   - {fileID: 1664594132932121086, guid: a31a21e7e58bdc640acd54a1a61e2a09, type: 3}
   - {fileID: 6793834167180317388, guid: c31ff9c346106624f855e44a8a005911, type: 3}
@@ -325,5 +325,5 @@ MonoBehaviour:
   _swordController: {fileID: 869754457788817100}
   _mercenaryController: {fileID: 838476154219720442}
   _speed: 20
-  _maxHp: 200
-  _delaySecondsPerSkill: 10
+  _maxHp: 1000
+  _delaySecondsPerSkill: 20

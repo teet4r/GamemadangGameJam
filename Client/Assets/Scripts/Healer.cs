@@ -11,6 +11,9 @@ public class Healer : Mercenary
 
     protected override void Update()
     {
+        if (Ingame.Instance.IsGameEnd)
+            return;
+
         base.Update();
 
         var hero = Ingame.Instance.Hero;
@@ -30,5 +33,20 @@ public class Healer : Mercenary
         healEffect.transform.SetParent(hero.transform);
         healEffect.transform.position = hero.transform.position;
         healEffect.Play();
+    }
+
+    public void LevelUp(int amount)
+    {
+        _healAmount += amount;
+    }
+
+    public void IncreaseHealAmount(int amount)
+    {
+        _healAmount += amount;
+    }
+
+    public void DecreaseCoolDown(int amount)
+    {
+        _delaySecondsPerSkill -= amount;
     }
 }

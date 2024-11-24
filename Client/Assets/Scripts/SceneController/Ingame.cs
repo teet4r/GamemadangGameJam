@@ -8,6 +8,8 @@ public class Ingame : MonoBehaviour
     public HeroBody Hero => _hero;
     [SerializeField] private HeroBody _hero;
 
+    public bool IsGameEnd;
+
     private void Awake()
     {
         _instance = this;
@@ -15,6 +17,7 @@ public class Ingame : MonoBehaviour
 
     private void Start()
     {
+        IsGameEnd = false;
         UIManager.Instance.Show<UIIngame>().Bind();
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIIngame : UI
@@ -9,12 +10,10 @@ public class UIIngame : UI
     [SerializeField] private Image _hpBar;
     [SerializeField] private Image _expBar;
     [SerializeField] private Text _levelText;
+    [SerializeField] private UIMercenarySlot[] _mercenarySlots;
 
     [Header("Variables")]
     [SerializeField] private float _totalTime;
-
-    public bool IsGameover => _isGameover;
-    private bool _isGameover;
 
     private int _killCount;
 
@@ -26,10 +25,11 @@ public class UIIngame : UI
     public void Bind()
     {
         _killCount = 0;
-        _isGameover = false;
         UpdateHpBar(1, 1);
         UpdateExpBar(1, 1);
         UpdateLevelText(1);
+        //for (int i = 0; i < _mercenarySlots.Length; ++i)
+        //    _mercenarySlots[i].Bind(null, null);
     }
 
     private void _UpdateTimer()
@@ -38,19 +38,22 @@ public class UIIngame : UI
         if (_totalTime < 0f)
         {
             _totalTime = 0f;
-            if (!_isGameover)
-                _isGameover = true;
+            if (!Ingame.Instance.IsGameEnd)
+            {
+                Ingame.Instance.IsGameEnd = true;
+                UIManager.Instance.Show<UIClearPopup>();
+            }
         }
 
         int minutes = (int)_totalTime / 60;
         int seconds = (int)_totalTime % 60;
 
-        _timerText.text = $"{minutes}:{seconds}";
+        _timerText.text = $"{minutes:D2}:{seconds:D2}";
     }
 
     public void AddKillCount()
     {
-        if (_isGameover)
+        if (Ingame.Instance.IsGameEnd)
             return;
 
         _killCountText.text = $"킬 횟수: {++_killCount}";

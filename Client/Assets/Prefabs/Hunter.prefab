@@ -123,5 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35fb038a606f0144a58df7d452ee65d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 9061739353408563080}
-  _delaySecondsPerShot: 1
+  _delaySecondsPerShot: 3
+  _shotCountPerShot: 1
