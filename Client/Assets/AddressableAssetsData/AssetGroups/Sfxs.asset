@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Sfxs
+  m_EditorClassIdentifier: 
+  m_GroupName: Sfxs
+  m_GUID: 777fa880a0039d442b6d563bf7884f62
+  m_SerializeEntries:
+  - m_GUID: 2667a0a008b044e218b63df62e2be749
+    m_Address: Clear
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 32d4b1811dda14a6cb9e059ee8ad17d2
+    m_Address: Click
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52320e590bf774734a288886eba557ba
+    m_Address: LevelUp
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ffb159a21c8a04135a5616979c828fab
+    m_Address: MonsterDie
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b4beaf631696f014f8c23963068d032b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 9d6ad0234923d4744bb495411bbe257a, type: 2}
+    - {fileID: 11400000, guid: 262c9418b1960874b8ee07244e4c3d4e, type: 2}

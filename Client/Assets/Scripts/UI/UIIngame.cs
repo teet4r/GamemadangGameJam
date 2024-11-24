@@ -26,7 +26,7 @@ public class UIIngame : UI
     {
         _killCount = 0;
         UpdateHpBar(1, 1);
-        UpdateExpBar(1, 1);
+        UpdateExpBar(0, 1);
         UpdateLevelText(1);
         //for (int i = 0; i < _mercenarySlots.Length; ++i)
         //    _mercenarySlots[i].Bind(null, null);
@@ -41,7 +41,7 @@ public class UIIngame : UI
             if (!Ingame.Instance.IsGameEnd)
             {
                 Ingame.Instance.IsGameEnd = true;
-                UIManager.Instance.Show<UIClearPopup>();
+                UIManager.Instance.Show<UIClearPopup>().Bind();
             }
         }
 

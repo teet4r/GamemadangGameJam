@@ -34,8 +34,8 @@ public class IncrementTable : MonoBehaviour
     {
         for (int i = 0; i < 50; ++i)
         {
-            int idx1 = _pickableIncrementIndexes[Random.Range(0, _pickableIncrementIndexes.Count)];
-            int idx2 = _pickableIncrementIndexes[Random.Range(0, _pickableIncrementIndexes.Count)];
+            int idx1 = Random.Range(0, _pickableIncrementIndexes.Count);
+            int idx2 = Random.Range(0, _pickableIncrementIndexes.Count);
 
             int t = _pickableIncrementIndexes[idx1];
             _pickableIncrementIndexes[idx1] = _pickableIncrementIndexes[idx2];

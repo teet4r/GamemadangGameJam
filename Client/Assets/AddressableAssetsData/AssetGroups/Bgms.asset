@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Bgms
+  m_EditorClassIdentifier: 
+  m_GroupName: Bgms
+  m_GUID: c9640676f32a74f49bd621604bfcfbef
+  m_SerializeEntries:
+  - m_GUID: 458dd8822518c4f37bc3edba9b6c57d9
+    m_Address: Ingame
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bea93a38b71b64b598109b3a3b1a0048
+    m_Address: Lobby
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b4beaf631696f014f8c23963068d032b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 90957d87f5042fb46af88b9421f8afcf, type: 2}
+    - {fileID: 11400000, guid: 3dceec717afa01148a7e1fb752ce54e6, type: 2}

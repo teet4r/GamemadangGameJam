@@ -19,5 +19,12 @@ public class Ingame : MonoBehaviour
     {
         IsGameEnd = false;
         UIManager.Instance.Show<UIIngame>().Bind();
+        AudioManager.Instance.Bgm.Play(BgmName.Ingame);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            UIManager.Instance.Show<UIPausePopup>().Bind();
     }
 }

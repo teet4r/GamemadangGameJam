@@ -38,7 +38,6 @@ public class Sfx : MonoBehaviour
         {
             var obj = Addressables.LoadAssetAsync<AudioClip>(sfx.ToString()).WaitForCompletion();
             _sfxs.Add(sfx, clip = obj);
-            Addressables.Release(obj);
         }
         _audioSource.PlayOneShot(clip);
     }

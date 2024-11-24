@@ -55,7 +55,7 @@ public class MonsterSpawner : MonoBehaviour
             {
                 for (int j = 0; j < arr[i].count; ++j)
                 {
-                    float x = UnityEngine.Random.Range(-15f, 15f);
+                    float x = UnityEngine.Random.Range(-25f, 25f);
                     float y = (float)Math.Sqrt(225 - x * x) * (UnityEngine.Random.Range(0, 2) == 0 ? -1 : 1);
 
                     switch (arr[i].monsterName)

@@ -67,8 +67,9 @@ public abstract class Monster : PoolObject, ICollidable
             effect.Play();
 
             UIManager.Instance.Get<UIIngame>().AddKillCount();
+            AudioManager.Instance.Sfx.Play(SfxName.MonsterDie);
 
-            if (Ingame.Instance.Hero.Level < 30 && Random.Range(0, 100) < 70)
+            if (Ingame.Instance.Hero.Level < 30 && Random.Range(0, 100) < 75)
             {
                 var exp = ObjectPoolManager.Instance.Get<Experience>();
                 exp.transform.position = rigid.position;

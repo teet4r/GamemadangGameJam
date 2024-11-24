@@ -15,9 +15,18 @@ public class UILobby : UI
         _startButton.SetListener(() =>
         {
             UIManager.Instance.Hide(this);
+            AudioManager.Instance.Sfx.Play(SfxName.Click);
             SceneManager.Instance.LoadSceneAsync(SceneName._3_Ingame).Forget();
         });
-        _howToPlayButton.SetListener(() => UIManager.Instance.Show<UIGameDescription>());
-        _quitButton.SetListener(() => Application.Quit());
+        _howToPlayButton.SetListener(() =>
+        {
+            AudioManager.Instance.Sfx.Play(SfxName.Click);
+            UIManager.Instance.Show<UIGameDescription>();
+        });
+        _quitButton.SetListener(() =>
+        {
+            AudioManager.Instance.Sfx.Play(SfxName.Click);
+            Application.Quit();
+        });
     }
 }

@@ -9,9 +9,10 @@ public class UILevelUpPopup : UI
         Time.timeScale = 0f;
 
         for (int i = 0; i < _slots.Length; ++i)
+        {
+            var ii = i;
             _slots[i].Bind(() =>
             {
-                var ii = i;
                 datas[ii].OnLevelUp();
                 Time.timeScale = 1f;
                 UIManager.Instance.Hide(this);
@@ -19,5 +20,6 @@ public class UILevelUpPopup : UI
             datas[i].Icon,
             datas[i].Name,
             datas[i].Description);
+        }
     }
 }

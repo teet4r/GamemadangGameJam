@@ -9,6 +9,10 @@ public class UIGameDescription : UI
     {
         base.Awake();
 
-        _exit.SetListener(() => UIManager.Instance.Hide(this));
+        _exit.SetListener(() =>
+        {
+            AudioManager.Instance.Sfx.Play(SfxName.Click);
+            UIManager.Instance.Hide(this);
+        });
     }
 }

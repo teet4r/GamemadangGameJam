@@ -24,10 +24,9 @@ public class HeroBody : MonoBehaviour, ICollidable
     private const string _VERTICAL = "Vertical";
     private readonly int _isRunHash = Animator.StringToHash("IsRun");
 
-    public Vector2 Dir => (Vector2)transform.position - _prevPos;
-    private Vector2 _prevPos = new();
     private Vector2 _vec = new();
     private Camera _mainCamera;
+    public Vector2 nextPos = new();
 
     public bool IsDead => _hp <= 0;
     public int Level => _level;
@@ -47,7 +46,6 @@ public class HeroBody : MonoBehaviour, ICollidable
     private void Start()
     {
         _mainCamera = Camera.main;
-        _prevPos = transform.position;
         _hp = _maxHp;
         _level = 1;
         _exp = 0;
@@ -114,7 +112,7 @@ public class HeroBody : MonoBehaviour, ICollidable
         if (IsDead)
         {
             Ingame.Instance.IsGameEnd = true;
-            UIManager.Instance.Show<UIGameoverPopup>();
+            UIManager.Instance.Show<UIGameoverPopup>().Bind();
             _swordController.StopSpin();
             Destroy(gameObject);
         }
@@ -143,8 +141,9 @@ public class HeroBody : MonoBehaviour, ICollidable
             ++_level;
             _maxHp += 200;
             GetHeal(_maxHp);
+            AudioManager.Instance.Sfx.Play(SfxName.LevelUp);
 
-            if (_level % 3 == 0)
+            //if (_level % 3 == 0)
             {
                 var result = IncrementTable.Instance.Pick3Increments();
                 UIManager.Instance.Show<UILevelUpPopup>().Bind(result);
@@ -172,8 +171,8 @@ public class HeroBody : MonoBehaviour, ICollidable
 
     private void _Move()
     {
-        _vec.x = Input.GetAxisRaw(_HORIZONTAL);
-        _vec.y = Input.GetAxisRaw(_VERTICAL);
+        nextPos.x = _vec.x = Input.GetAxisRaw(_HORIZONTAL);
+        nextPos.y = _vec.y = Input.GetAxisRaw(_VERTICAL);
         _vec.Normalize();
         _rigid.MovePosition((Vector2)transform.position + Time.deltaTime * _speed * _vec);
 
@@ -185,8 +184,6 @@ public class HeroBody : MonoBehaviour, ICollidable
         transform.eulerAngles = eAngle;
 
         _animator.SetBool(_isRunHash, IsRun);
-
-        _prevPos = transform.position;
     }
 
     private void _CameraFollowing()

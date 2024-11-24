@@ -2,9 +2,9 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIClearPopup : UI
+public class UIPausePopup : UI
 {
-    [SerializeField] private Button _retryButton;
+    [SerializeField] private Button _resumeButton;
     [SerializeField] private Button _goMainButton;
     [SerializeField] private Button _quitButton;
 
@@ -12,18 +12,16 @@ public class UIClearPopup : UI
     {
         base.Awake();
 
-        _retryButton.SetListener(() =>
+        _resumeButton.SetListener(() =>
         {
-            Time.timeScale = 1.0f;
+            Time.timeScale = 1f;
             AudioManager.Instance.Sfx.Play(SfxName.Click);
-            SceneManager.Instance.LoadSceneAsync(SceneName._3_Ingame).Forget();
-            ObjectPoolManager.Instance.ClearAll();
-            UIManager.Instance.ClearAll();
+            UIManager.Instance.Hide(this);
         });
 
         _goMainButton.SetListener(() =>
         {
-            Time.timeScale = 1.0f;
+            Time.timeScale = 1f;
             AudioManager.Instance.Sfx.Play(SfxName.Click);
             SceneManager.Instance.LoadSceneAsync(SceneName._2_Lobby).Forget();
             ObjectPoolManager.Instance.ClearAll();
@@ -39,7 +37,6 @@ public class UIClearPopup : UI
 
     public void Bind()
     {
-        Time.timeScale = 0.0f;
-        AudioManager.Instance.Sfx.Play(SfxName.Clear);
+        Time.timeScale = 0f;
     }
 }

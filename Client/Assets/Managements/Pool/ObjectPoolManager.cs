@@ -42,12 +42,6 @@ public class ObjectPoolManager : SingletonBehaviour<ObjectPoolManager>
 
             _pool.Add(obj);
         }
-
-        public void Clear()
-        {
-            foreach(var obj in _pool)
-                Addressables.ReleaseInstance(obj.gameObject);
-        }
     }
 
     private Transform _tr;
@@ -74,8 +68,9 @@ public class ObjectPoolManager : SingletonBehaviour<ObjectPoolManager>
 
     public void ClearAll()
     {
-        foreach (var pool in _pools.Values)
-            pool.Clear();
+        int childCount = _tr.childCount;
+        for (int i = 0; i < childCount; ++i)
+            Destroy(_tr.GetChild(i).gameObject);
         _pools.Clear();
     }
 

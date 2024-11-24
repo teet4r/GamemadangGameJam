@@ -14,19 +14,31 @@ public class UIGameoverPopup : UI
 
         _retryButton.SetListener(() =>
         {
+            Time.timeScale = 1f;
+            AudioManager.Instance.Sfx.Play(SfxName.Click);
             SceneManager.Instance.LoadSceneAsync(SceneName._3_Ingame).Forget();
             ObjectPoolManager.Instance.ClearAll();
+            UIManager.Instance.ClearAll();
         });
 
         _goMainButton.SetListener(() =>
         {
+            Time.timeScale = 1f;
+            AudioManager.Instance.Sfx.Play(SfxName.Click);
             SceneManager.Instance.LoadSceneAsync(SceneName._2_Lobby).Forget();
             ObjectPoolManager.Instance.ClearAll();
+            UIManager.Instance.ClearAll();
         });
 
         _quitButton.SetListener(() =>
         {
+            AudioManager.Instance.Sfx.Play(SfxName.Click);
             Application.Quit();
         });
+    }
+
+    public void Bind()
+    {
+        Time.timeScale = 0f;
     }
 }
