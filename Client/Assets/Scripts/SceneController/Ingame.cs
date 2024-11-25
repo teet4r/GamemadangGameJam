@@ -9,6 +9,8 @@ public class Ingame : MonoBehaviour
     [SerializeField] private HeroBody _hero;
 
     public bool IsGameEnd;
+    public bool showMercenariesCoolDown => _showMercenariesCoolDown;
+    private bool _showMercenariesCoolDown;
 
     private void Awake()
     {
@@ -20,11 +22,15 @@ public class Ingame : MonoBehaviour
         IsGameEnd = false;
         UIManager.Instance.Show<UIIngame>().Bind();
         AudioManager.Instance.Bgm.Play(BgmName.Ingame);
+
+        _showMercenariesCoolDown = false;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             UIManager.Instance.Show<UIPausePopup>().Bind();
+        else if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+            _showMercenariesCoolDown = !_showMercenariesCoolDown;
     }
 }

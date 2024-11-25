@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Guardian : Mercenary
 {
     [SerializeField] private float _delaySecondsPerSkill;
+    [SerializeField] private CanvasGroup _canvasGroup;
+    [SerializeField] private Image _coolDownImage;
     private float _delaySeconds = 0f;
     private int _additionalShieldHp = 0;
     private int _additionalDuration = 0;
@@ -22,7 +25,11 @@ public class Guardian : Mercenary
             return;
 
         animator.SetBool(_isRunHash, hero.IsRun);
+
         _delaySeconds += Time.deltaTime;
+        _coolDownImage.fillAmount = (_delaySecondsPerSkill - _delaySeconds) / _delaySecondsPerSkill;
+        _canvasGroup.alpha = Ingame.Instance.showMercenariesCoolDown ? 1 : 0;
+
         if (_delaySeconds < _delaySecondsPerSkill)
             return;
 

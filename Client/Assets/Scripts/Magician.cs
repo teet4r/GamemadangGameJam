@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Magician : Mercenary
 {
     [SerializeField] private float _delaySecondsPerSkill;
     [SerializeField] private float _monsterDetectionRadius;
+    [SerializeField] private CanvasGroup _canvasGroup;
+    [SerializeField] private Image _coolDownImage;
     private float _delaySeconds = 0f;
     private int _additionalDamage = 0;
 
@@ -24,6 +27,9 @@ public class Magician : Mercenary
         animator.SetBool(_isRunHash, hero.IsRun);
 
         _delaySeconds += Time.deltaTime;
+        _coolDownImage.fillAmount = (_delaySecondsPerSkill - _delaySeconds) / _delaySecondsPerSkill;
+        _canvasGroup.alpha = Ingame.Instance.showMercenariesCoolDown ? 1 : 0;
+
         if (_delaySeconds < _delaySecondsPerSkill)
             return;
 
